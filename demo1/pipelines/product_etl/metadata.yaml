@@ -1,0 +1,111 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - product_filter_transform
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: product_loader
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: product_loader
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - product_deduplicate_transformer
+  - product_filter_transform_histogram_n0
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: product_filter_transform
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - product_loader
+  uuid: product_filter_transform
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: review_filter_exporter
+  retry_config: null
+  status: updated
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - product_deduplicate_transformer
+  uuid: review_filter_exporter
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - review_filter_exporter
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: product_deduplicate_transformer
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - product_filter_transform
+  uuid: product_deduplicate_transformer
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2024-03-20 09:47:33.044857+00:00'
+data_integration: null
+description: null
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: product_ETL
+notification_config: {}
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+tags: []
+type: python
+uuid: product_etl
+variables_dir: /home/src/mage_data/demo1
+widgets:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    buckets: 10
+    chart_type: histogram
+    x: x
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: product_filter_transform_histogram_n0
+  retry_config: null
+  status: executed
+  timeout: null
+  type: chart
+  upstream_blocks:
+  - product_filter_transform
+  uuid: product_filter_transform_histogram_n0

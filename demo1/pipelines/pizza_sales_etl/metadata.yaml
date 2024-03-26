@@ -1,0 +1,325 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - duplicate_handling
+  - prizza_data_loader_bar_chart_u6
+  - prizza_data_loader_pie_chart_v9
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: Prizza_data_Loader
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: prizza_data_loader
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - remove_last50rows
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: Duplicate_handling
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - prizza_data_loader
+  uuid: duplicate_handling
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - remove_ordertime_column
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: remove_last50rows
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - duplicate_handling
+  uuid: remove_last50rows
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - custom_check_datatypes
+  - sortbypizzacategory
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: Remove_ordertime_column
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - remove_last50rows
+  uuid: remove_ordertime_column
+- all_upstream_blocks_executed: true
+  color: blue
+  configuration: {}
+  downstream_blocks:
+  - datetime_covert
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: custom_check_dataTypes
+  retry_config: null
+  status: executed
+  timeout: null
+  type: custom
+  upstream_blocks:
+  - remove_ordertime_column
+  uuid: custom_check_datatypes
+- all_upstream_blocks_executed: true
+  color: blue
+  configuration: {}
+  downstream_blocks:
+  - sortbypizzacategory
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: datetime_covert
+  retry_config: null
+  status: executed
+  timeout: null
+  type: custom
+  upstream_blocks:
+  - custom_check_datatypes
+  uuid: datetime_covert
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - cleancolumnnames
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: sortBypizzaCategory
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - remove_ordertime_column
+  - datetime_covert
+  uuid: sortbypizzacategory
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - aggrigating_over_pizzacategory
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: cleancolumnnames
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - sortbypizzacategory
+  uuid: cleancolumnnames
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - fixsyntaxerrors
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: Aggrigating_over_pizzacategory
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - cleancolumnnames
+  uuid: aggrigating_over_pizzacategory
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - format_category_to_capital
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: fixSyntaxErrors
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - aggrigating_over_pizzacategory
+  uuid: fixsyntaxerrors
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - difcol
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: format_category_to_capital
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - fixsyntaxerrors
+  uuid: format_category_to_capital
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - difcol_bar_chart_d3
+  - remove_dif
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: difcol
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - format_category_to_capital
+  uuid: difcol
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - to_csv
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: remove_dif
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - difcol
+  uuid: remove_dif
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: to_csv
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - remove_dif
+  uuid: to_csv
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2024-03-21 04:23:31.035474+00:00'
+data_integration: null
+description: null
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: pizza_sales_ETL
+notification_config: {}
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+tags: []
+type: python
+uuid: pizza_sales_etl
+variables_dir: /home/src/mage_data/demo1
+widgets:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    chart_style: vertical
+    chart_type: bar chart
+    x: x
+    y: y
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: difcol_bar chart_d3
+  retry_config: null
+  status: executed
+  timeout: null
+  type: chart
+  upstream_blocks:
+  - difcol
+  uuid: difcol_bar_chart_d3
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    chart_style: vertical
+    chart_type: bar chart
+    x: x
+    y: y
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: prizza_data_loader_bar chart_u6
+  retry_config: null
+  status: updated
+  timeout: null
+  type: chart
+  upstream_blocks:
+  - prizza_data_loader
+  uuid: prizza_data_loader_bar_chart_u6
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    buckets: 7
+    chart_type: pie chart
+    x: x
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: prizza_data_loader_pie chart_v9
+  retry_config: null
+  status: updated
+  timeout: null
+  type: chart
+  upstream_blocks:
+  - prizza_data_loader
+  uuid: prizza_data_loader_pie_chart_v9

@@ -1,0 +1,4 @@
+{"operation": "create", "resource": {"type": "pipeline", "uuid": "curious_paladin"}, "timestamp": 1710919530, "user": null}
+{"operation": "create", "resource": {"type": "pipeline", "uuid": "dazzling_field"}, "timestamp": 1710925774, "user": null}
+{"operation": "create", "resource": {"type": "pipeline", "uuid": "cold_music"}, "timestamp": 1710926261, "user": null}
+{"operation": "create", "resource": {"type": "pipeline", "uuid": "heroic_astronomer"}, "timestamp": 1710928055, "user": null}

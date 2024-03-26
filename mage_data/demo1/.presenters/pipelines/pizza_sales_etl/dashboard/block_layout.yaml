@@ -1,0 +1,119 @@
+blocks:
+  completed_pipeline_runs_daily_pizza_sales_etl_t5:
+    configuration:
+      chart_type: time series line chart
+      group_by:
+      - execution_date
+      metrics:
+      - aggregation: count_distinct
+        column: id
+      time_interval: day
+    data_source:
+      pipeline_uuid: pizza_sales_etl
+      type: pipeline_runs
+    name: Completed pipeline runs daily
+    type: chart
+    uuid: completed_pipeline_runs_daily_pizza_sales_etl_t5
+  failed_pipeline_runs_daily_pizza_sales_etl_z1:
+    configuration:
+      chart_type: time series line chart
+      group_by:
+      - execution_date
+      metrics:
+      - aggregation: count_distinct
+        column: id
+      time_interval: day
+    data_source:
+      pipeline_uuid: pizza_sales_etl
+      type: pipeline_runs
+    name: Failed pipeline runs daily
+    type: chart
+    uuid: failed_pipeline_runs_daily_pizza_sales_etl_z1
+  pipeline_run_status_pizza_sales_etl_u5:
+    configuration:
+      chart_style: horizontal
+      chart_type: bar chart
+      group_by:
+      - status
+      metrics:
+      - aggregation: count_distinct
+        column: id
+      y_sort_order: descending
+    data_source:
+      pipeline_uuid: pizza_sales_etl
+      type: pipeline_runs
+    name: Pipeline run status
+    type: chart
+    uuid: pipeline_run_status_pizza_sales_etl_u5
+  pipeline_runs_daily_pizza_sales_etl_e7:
+    configuration:
+      chart_type: time series line chart
+      group_by:
+      - execution_date
+      metrics:
+      - aggregation: count_distinct
+        column: id
+      time_interval: day
+    data_source:
+      pipeline_uuid: pizza_sales_etl
+      type: pipeline_runs
+    name: Pipeline runs daily
+    type: chart
+    uuid: pipeline_runs_daily_pizza_sales_etl_e7
+  trigger_active_status_pizza_sales_etl_u6:
+    configuration:
+      chart_type: bar chart
+      group_by:
+      - status
+      metrics:
+      - aggregation: count_distinct
+        column: id
+      y_sort_order: descending
+    data_source:
+      pipeline_uuid: pizza_sales_etl
+      type: pipeline_schedules
+    name: Trigger active status
+    type: chart
+    uuid: trigger_active_status_pizza_sales_etl_u6
+  trigger_frequency_pizza_sales_etl_b5:
+    configuration:
+      chart_style: horizontal
+      chart_type: bar chart
+      group_by:
+      - schedule_interval
+      metrics:
+      - aggregation: count_distinct
+        column: id
+      y_sort_order: descending
+    data_source:
+      pipeline_uuid: pizza_sales_etl
+      type: pipeline_schedules
+    name: Trigger frequency
+    type: chart
+    uuid: trigger_frequency_pizza_sales_etl_b5
+  trigger_types_pizza_sales_etl_a2:
+    configuration:
+      chart_type: pie chart
+      group_by:
+      - schedule_type
+    data_source:
+      pipeline_uuid: pizza_sales_etl
+      type: pipeline_schedules
+    name: Trigger types
+    type: chart
+    uuid: trigger_types_pizza_sales_etl_a2
+layout:
+- - block_uuid: trigger_active_status_pizza_sales_etl_u6
+    width: 1
+  - block_uuid: trigger_types_pizza_sales_etl_a2
+    width: 1
+  - block_uuid: trigger_frequency_pizza_sales_etl_b5
+    width: 2
+- - block_uuid: pipeline_run_status_pizza_sales_etl_u5
+    width: 1
+  - block_uuid: pipeline_runs_daily_pizza_sales_etl_e7
+    width: 2
+- - block_uuid: completed_pipeline_runs_daily_pizza_sales_etl_t5
+    width: 1
+  - block_uuid: failed_pipeline_runs_daily_pizza_sales_etl_z1
+    width: 1
