@@ -1,0 +1,13 @@
+if 'transformer' not in globals():
+    from mage_ai.data_preparation.decorators import transformer
+if 'test' not in globals():
+    from mage_ai.data_preparation.decorators import test
+
+import joblib
+
+@transformer
+def transform(data, *args, **kwargs):
+    
+    # Load the saved K-means model
+    kmeans_model_loaded = joblib.load('kmeans_model.pkl')
+    return data

@@ -1,0 +1,39 @@
+if 'custom' not in globals():
+    from mage_ai.data_preparation.decorators import custom
+if 'test' not in globals():
+    from mage_ai.data_preparation.decorators import test
+
+from pandas import DataFrame
+import joblib
+
+@custom
+def segment_customerts(df:DataFrame,*args, **kwargs) -> None:
+
+
+    # Load the saved K-means model
+    kmeans_model_loaded = joblib.load('kmeans_model.pkl')
+    print(kmeans_model_loaded)
+
+    #print(df)
+    print("Columns in the DataFrame:")
+    print(df.columns)
+
+    # Strip leading and trailing spaces from column names
+    df.columns = df.columns.str.strip()
+
+    # Check if all required columns exist in the DataFrame
+    required_columns = ['products_purchased', 'complains', 'money_spent']
+    missing_columns = [col for col in required_columns if col not in df.columns]
+
+    # Check if all required columns exist in the DataFrame
+    required_columns = ['products_purchased', 'complains', 'money_spent']
+    missing_columns = [col for col in required_columns if col not in df.columns]
+
+    if missing_columns:
+        print(f"Error: Missing columns in DataFrame: {missing_columns}")
+    else:
+        # Access the desired columns
+        print(df[['products_purchased', 'complains', 'money_spent']])
+
+
+    #print(df[['products_purchased','complains','money_spent']])

@@ -1,0 +1,23 @@
+if 'custom' not in globals():
+    from mage_ai.data_preparation.decorators import custom
+if 'test' not in globals():
+    from mage_ai.data_preparation.decorators import test
+
+from pandas import DataFrame
+import joblib
+
+@custom
+def segment_customerts(df:DataFrame,*args, **kwargs) -> None:
+
+
+    # Load the saved K-means model
+    kmeans_model_loaded = joblib.load('kmeans_model.pkl')
+    print(kmeans_model_loaded)
+
+    #print(df)
+    print("Columns in the DataFrame:")
+    print(df.columns)
+
+    print(df[['products_purchased', 'complains', 'money_spent']])
+
+    #print(df[['products_purchased','complains','money_spent']])
