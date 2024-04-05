@@ -28,4 +28,4 @@ def export_data(df: DataFrame, **kwargs) -> None:
     joblib.dump(kmeans_model_new, 'data/kmeans_model.pkl')
 
     # Load the saved K-means model
-    kmeans_model_loaded = joblib.load('./data/kmeans_model.pkl')
+    kmeans_model_loaded = joblib.load('data/kmeans_model.pkl')

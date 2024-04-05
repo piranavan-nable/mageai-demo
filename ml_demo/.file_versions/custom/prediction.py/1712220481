@@ -44,28 +44,8 @@ def segment_customerts(df:DataFrame,*args, **kwargs) -> None:
     print(cluster_counts)
 
     # Calculate the average spending behavior for each cluster
-    cluster_spending = df.groupby(new_predictions)['money_spent'].mean()
+    cluster_spending = new_data.groupby(new_predictions)['money_spent'].mean()
 
     # Print the average spending behavior for each cluster
     print("\nAverage Spending Behavior for Each Cluster:")
     print(cluster_spending)
-
-
-    # 1. Identify Key Features for Each Cluster
-    cluster_centroids = kmeans_model_loaded.cluster_centers_
-    print("\nCluster Centroids (Key Features):")
-    print(pd.DataFrame(cluster_centroids, columns=df[['products_purchased', 'complains', 'money_spent']].columns))
-
-    # 2. Customer Profiling
-    print("\nCustomer Profiling:")
-    cluster_profiles = df.groupby(new_predictions).agg({
-        'products_purchased': 'mean',
-        'complains': 'mean',
-        'money_spent': 'mean'
-    })
-    print(cluster_profiles)
-
-    # 3. Churn Prediction (Example: analyze complaints)
-    print("\nChurn Prediction (Complaint Analysis):")
-    churn_prediction = df.groupby(new_predictions)['complains'].sum()
-    print(churn_prediction)

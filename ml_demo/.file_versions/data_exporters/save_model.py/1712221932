@@ -25,7 +25,7 @@ def export_data(df: DataFrame, **kwargs) -> None:
     kmeans_model_new = KMeans(n_clusters = 5,init='k-means++',max_iter=400,random_state=42)
 
     # Save the trained K-means model
-    joblib.dump(kmeans_model_new, 'data/kmeans_model.pkl')
+    joblib.dump(kmeans_model_new, './data/kmeans_model.pkl')
 
     # Load the saved K-means model
     kmeans_model_loaded = joblib.load('./data/kmeans_model.pkl')

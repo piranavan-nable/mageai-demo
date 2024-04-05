@@ -1,8 +1,6 @@
 from mage_ai.io.file import FileIO
-from pandas import DataFrame 
-import pandas as pd
-from sklearn.cluster import KMeans
-
+from pandas import DataFrame
+import joblib
 
 if 'data_exporter' not in globals():
     from mage_ai.data_preparation.decorators import data_exporter
@@ -28,4 +26,4 @@ def export_data(df: DataFrame, **kwargs) -> None:
     joblib.dump(kmeans_model_new, 'data/kmeans_model.pkl')
 
     # Load the saved K-means model
-    kmeans_model_loaded = joblib.load('./data/kmeans_model.pkl')
+    kmeans_model_loaded = joblib.load('data/kmeans_model.pkl')
