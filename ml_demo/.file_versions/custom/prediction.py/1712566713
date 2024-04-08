@@ -33,14 +33,6 @@ def segment_customerts(df:DataFrame,*args, **kwargs) -> None:
         print(df[['products_purchased', 'complains', 'money_spent']])
 
 
-    # Check if the model is fitted
-    if not hasattr(kmeans_model_loaded, 'cluster_centers_'):
-        print("Model is not fitted. Fitting the model now...")
-        kmeans_model_loaded.fit(df[['products_purchased', 'complains', 'money_spent']])
-    else:
-        print("Model is already fitted.")
-
-
     # Use the loaded K-means model to predict clusters for the new data
     new_predictions = kmeans_model_loaded.predict(df[['products_purchased','complains','money_spent']])
     

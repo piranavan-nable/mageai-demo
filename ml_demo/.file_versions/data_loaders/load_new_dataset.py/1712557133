@@ -18,15 +18,16 @@ def load_data_from_file(*args, **kwargs):
     Docs: https://docs.mage.ai/design/data-loading#fileio
     """
     filepath = './data/new.csv'
-    aa = FileIO().load(filepath)
-    print(list(aa.columns))    
-    return FileIO().load(filepath)
+    output = FileIO().load(filepath)
+    print(output)    return FileIO().load(filepath)
 
 
 @test
 def test_output(output, *args) -> None:
-
+    """
+    Template code for testing the output of the block.
+    """
     assert output is not None, 'The output is undefined'
     assert isinstance(output, pd.DataFrame)
     assert len(output) == 13
-    assert list(output.columns) == ['customer_id', ' products_purchased', ' complains', ' money_spent']
+    assert list(output.columns) == ['customer_id', 'products_purchased','complains','money_spent']

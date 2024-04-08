@@ -33,14 +33,6 @@ def segment_customerts(df:DataFrame,*args, **kwargs) -> None:
         print(df[['products_purchased', 'complains', 'money_spent']])
 
 
-    # Check if the model is fitted
-    if not hasattr(kmeans_model_loaded, 'cluster_centers_'):
-        print("Model is not fitted. Fitting the model now...")
-        kmeans_model_loaded.fit(df[['products_purchased', 'complains', 'money_spent']])
-    else:
-        print("Model is already fitted.")
-
-
     # Use the loaded K-means model to predict clusters for the new data
     new_predictions = kmeans_model_loaded.predict(df[['products_purchased','complains','money_spent']])
     
@@ -59,21 +51,21 @@ def segment_customerts(df:DataFrame,*args, **kwargs) -> None:
     print(cluster_spending)
 
 
-    # 1. Identify Key Features for Each Cluster
-    cluster_centroids = kmeans_model_loaded.cluster_centers_
-    print("\nCluster Centroids (Key Features):")
-    print(pd.DataFrame(cluster_centroids, columns=df[['products_purchased', 'complains', 'money_spent']].columns))
+    # # 1. Identify Key Features for Each Cluster
+    # cluster_centroids = kmeans_model_loaded.cluster_centers_
+    # print("\nCluster Centroids (Key Features):")
+    # print(pd.DataFrame(cluster_centroids, columns=df[['products_purchased', 'complains', 'money_spent']].columns))
 
-    # 2. Customer Profiling
-    print("\nCustomer Profiling:")
-    cluster_profiles = df.groupby(new_predictions).agg({
-        'products_purchased': 'mean',
-        'complains': 'mean',
-        'money_spent': 'mean'
-    })
-    print(cluster_profiles)
+    # # 2. Customer Profiling
+    # print("\nCustomer Profiling:")
+    # cluster_profiles = df.groupby(new_predictions).agg({
+    #     'products_purchased': 'mean',
+    #     'complains': 'mean',
+    #     'money_spent': 'mean'
+    # })
+    # print(cluster_profiles)
 
-    # 3. Churn Prediction (Example: analyze complaints)
-    print("\nChurn Prediction (Complaint Analysis):")
-    churn_prediction = df.groupby(new_predictions)['complains'].sum()
-    print(churn_prediction)
+    # # 3. Churn Prediction (Example: analyze complaints)
+    # print("\nChurn Prediction (Complaint Analysis):")
+    # churn_prediction = df.groupby(new_predictions)['complains'].sum()
+    # print(churn_prediction)
