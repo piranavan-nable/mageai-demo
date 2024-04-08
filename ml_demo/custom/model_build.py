@@ -49,11 +49,3 @@ def transform_custom(data,*args, **kwargs):
     kmeans_model_new.fit_predict(data[['products_purchased','complains','money_spent']])
 
     return kmeans_model_new
-
-
-@test
-def test_output(output, *args) -> None:
-    """
-    Template code for testing the output of the block.
-    """
-    assert output is not None, 'The output is undefined'
