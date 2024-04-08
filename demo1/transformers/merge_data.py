@@ -28,10 +28,10 @@ def transform( data, data_2, data_3, data_4, *args, **kwargs):
     # df4 = get_variable('sales_prediction_time_series', 'category_loader', 'output_0')
 
 
-    df1 = pd.DataFrame(data_4)
-    df2 = pd.DataFrame(data_3)
-    df3 = pd.DataFrame(data)
-    df4 = pd.DataFrame(data_2)
+    df1 = pd.DataFrame(data)
+    df2 = pd.DataFrame(data_2)
+    df3 = pd.DataFrame(data_3)
+    df4 = pd.DataFrame(data_4)
 
     # Specify your transformation logic here
     df = pd.merge(df1, df2, on='ChannelKey', how='left')
