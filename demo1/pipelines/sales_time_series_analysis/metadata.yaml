@@ -1,0 +1,357 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_source:
+      path: data_loaders/sales_data_loader.py
+  downstream_blocks:
+  - merge_data
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: sales_data_loader
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: sales_data_loader
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_source:
+      path: data_loaders/channel_loader.py
+  downstream_blocks:
+  - merge_data
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: channel_loader
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: channel_loader
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_source:
+      path: data_loaders/product_data_loader.py
+  downstream_blocks:
+  - merge_data
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: product_data_loader
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: product_data_loader
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_source:
+      path: data_loaders/category_loader.py
+  downstream_blocks:
+  - merge_data
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: category_loader
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: category_loader
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_source:
+      path: transformers/merge_data.py
+  downstream_blocks:
+  - duplicate_sales
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: merge_data
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - sales_data_loader
+  - channel_loader
+  - product_data_loader
+  - category_loader
+  uuid: merge_data
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_source:
+      path: transformers/duplicate_sales.py
+  downstream_blocks:
+  - null_check
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: duplicate_sales
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - merge_data
+  uuid: duplicate_sales
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_source:
+      path: transformers/remove__cols.py
+  downstream_blocks:
+  - naming
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: remove__cols
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - oitlierhandling
+  uuid: remove__cols
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_source:
+      path: transformers/naming.py
+  downstream_blocks:
+  - check_datatypes
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: naming
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - remove__cols
+  uuid: naming
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_source:
+      path: transformers/null_check.py
+  downstream_blocks:
+  - oitlierhandling
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: null_check
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - duplicate_sales
+  uuid: null_check
+- all_upstream_blocks_executed: true
+  color: teal
+  configuration:
+    file_source:
+      path: custom/check_datatypes.py
+  downstream_blocks:
+  - covert_to_date
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: check_datatypes
+  retry_config: null
+  status: executed
+  timeout: null
+  type: custom
+  upstream_blocks:
+  - naming
+  uuid: check_datatypes
+- all_upstream_blocks_executed: true
+  color: teal
+  configuration:
+    file_source:
+      path: custom/covert_to_date.py
+  downstream_blocks:
+  - distribution
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: covert_to_date
+  retry_config: null
+  status: executed
+  timeout: null
+  type: custom
+  upstream_blocks:
+  - check_datatypes
+  uuid: covert_to_date
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_source:
+      path: transformers/oitlierhandling.py
+  downstream_blocks:
+  - remove__cols
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: oitlierhandling
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - null_check
+  uuid: oitlierhandling
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - check_month_wisedata
+  - labelencoder
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: distribution
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - covert_to_date
+  uuid: distribution
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_source:
+      path: transformers/create_features.py
+  downstream_blocks:
+  - model_development
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: create_features
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - labelencoder
+  uuid: create_features
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - remarkable_scholar
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: model_development
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - create_features
+  uuid: model_development
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: remarkable scholar
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - model_development
+  uuid: remarkable_scholar
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: check_month_wisedata
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - distribution
+  uuid: check_month_wisedata
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_source:
+      path: transformers/labelencoder.py
+  downstream_blocks:
+  - create_features
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: labelencoder
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - distribution
+  uuid: labelencoder
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2024-04-05 01:00:14.221593+00:00'
+data_integration: null
+description: null
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: sales_time_series_analysis
+notification_config: {}
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+tags: []
+type: python
+uuid: sales_time_series_analysis
+variables_dir: /home/src/mage_data/demo1
+widgets: []

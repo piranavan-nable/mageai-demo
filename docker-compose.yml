@@ -1,0 +1,51 @@
+version: '3'
+services:
+  magic:
+    image: mageai/mageai:latest
+    command: mage start ${PROJECT_NAME}
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      USER_CODE_PATH: /home/src/${PROJECT_NAME}
+      ENV: ${ENV}
+    ports:
+      - 6789:6789
+    volumes:
+      - .:/home/src/
+    restart: on-failure:5
+
+  # postgres database
+  postgres:
+    image: postgres:12.3
+    container_name: postgres
+    environment:
+      - POSTGRES_DB=admin
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_HOST_AUTH_METHOD=trust # allow all connections without a password. This is *not* recommended for prod
+    volumes:
+      - database-data:/var/lib/postgresql/data/ # persist data even if container shuts down
+      - ./data:/data 
+    ports:
+      - "5432:5432"
+
+  # pgadmin for managing postgis db (runs at localhost:5050)
+  # To add the above postgres server to pgadmin, use hostname as defined by docker: 'postgres'
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@local.net
+      - PGADMIN_DEFAULT_PASSWORD=admin
+      - PGADMIN_LISTEN_PORT=5050
+    ports:
+      - "5050:5050"
+    volumes:
+      - ./data:/data 
+  
+volumes:
+  database-data:
+
