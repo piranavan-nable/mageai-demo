@@ -1,0 +1,25 @@
+name: PySpark Unit Tests
+
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - uses: actions/setup-python@v3
+      with:
+        python-version: "3.8"
+
+    - name: check current dir
+      run: pwd
+
+    - name: Build and run Docker container
+      run: docker build --platform linux/amd64 --tag mageprod:latest .
+

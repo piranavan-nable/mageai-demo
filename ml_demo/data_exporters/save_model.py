@@ -25,7 +25,7 @@ def try_different_clusters(K, data):
 @data_exporter
 def export_data(df: DataFrame, **kwargs) -> None:
 
-     # Define K-means model
+    # Define K-means model
     kmeans_model = KMeans(init='k-means++',  max_iter=400, random_state=42)
 
     # Train the model

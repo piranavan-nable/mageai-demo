@@ -4,6 +4,7 @@ if 'data_loader' not in globals():
 if 'test' not in globals():
     from mage_ai.data_preparation.decorators import test
 
+import pandas as pd
 
 @data_loader
 def load_data_from_file(*args, **kwargs):
@@ -17,13 +18,13 @@ def load_data_from_file(*args, **kwargs):
     Docs: https://docs.mage.ai/design/data-loading#fileio
     """
     filepath = './data/customers_data.csv'
-
-    return FileIO().load(filepath)
-
+    output = FileIO().load(filepath)
+    print(list(output.columns))
+    return output
 
 @test
 def test_output(output, *args) -> None:
-    """
-    Template code for testing the output of the block.
-    """
     assert output is not None, 'The output is undefined'
+    assert isinstance(output, pd.DataFrame)
+    assert len(output) == 24000
+    assert list(output.columns) == ['customer_id', 'products_purchased', 'complains', 'money_spent']
