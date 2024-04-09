@@ -1,1 +1,0 @@
-{"user ID": "int64", "purchase ID": "int64", "bought at": "str", "SKU": "int64", "product": "str", "number of purchases": "int64", "condition": "str", "global ratings": "int64", "shares on social media": "int64", "reviews": "int64"}

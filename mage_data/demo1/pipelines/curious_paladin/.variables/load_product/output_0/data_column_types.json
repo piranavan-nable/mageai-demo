@@ -1,1 +1,0 @@
-{"ProductID": "int64", "Name": "str", "ProductNumber": "str", "Color": "str", "SafetyStockLevel": "int64", "StandardCost": "float64", "ListPrice": "float64", "SellStartDate": "str"}
