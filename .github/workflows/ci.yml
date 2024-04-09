@@ -3,7 +3,7 @@ name: PySpark Unit Tests
 on:
   pull_request:
     branches:
-      - develop
+      - ka/feature/002/ml_demo
 
 jobs:
   test:
