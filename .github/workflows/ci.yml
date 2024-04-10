@@ -22,6 +22,7 @@ jobs:
       run: docker build --platform linux/amd64 --tag mageprod:latest .
 
     - name: Test image
-      run: docker run -it -p 6789:6789 mageprod:latest /app/run_app.sh mage start ml_demo
+      run: docker run -p 6789:6789 mageprod:latest /app/run_app.sh mage start ml_demo
+
 
 
