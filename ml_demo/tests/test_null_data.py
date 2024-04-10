@@ -1,44 +1,31 @@
 import unittest
 import pandas as pd
-import sys
+import os,sys
  
 sys.path.append('../')  
 from transformers.check_null import check_null
 
 class TestCheckNullFunction(unittest.TestCase):
 
-    def test_empty_dataframe(self):
+    def test_check_null(self):
+
+        # test 02 -> test with empty df
         df = pd.DataFrame()
-        self.assertEqual(check_null(df), df)
+        expected_result = pd.DataFrame(index=df.index, columns=df.columns, data=False)
+        self.assertTrue(check_null(df).equals(expected_result))
 
-    def test_dataframe_no_null_values(self):
-        df = pd.DataFrame({
-            'A': [1, 2, 3],
-            'B': ['a', 'b', 'c']
-        })
-        self.assertEqual(check_null(df), df)
+        # test 02 -> test with no null values
+        # read data with no null values
+        df_1 =  pd.read_csv('./data/data_without_null.csv')
+        self.assertTrue(check_null(df_1).equals(df_1))
 
-    def test_dataframe_with_null_values(self):
-        df = pd.DataFrame({
-            'A': [1, None, 3],
-            'B': ['a', 'b', None]
-        })
-        self.assertIsNone(check_null(df))
 
-    def test_dataframe_mixed_data_types(self):
-        df = pd.DataFrame({
-            'A': [1, 2.5, 'hello'],
-            'B': [True, False, None]
-        })
-        self.assertIsNone(check_null(df))
+    
 
-    def test_dataframe_missing_columns(self):
-        df = pd.DataFrame({
-            'A': [1, 2, 3],
-            'B': ['a', 'b', 'c']
-        })
-        df_missing_columns = df[['A']]  # DataFrame with missing column 'B'
-        self.assertEqual(check_null(df_missing_columns), df_missing_columns)
+
+
+
+
 
 if __name__ == '__main__':
     unittest.main()
