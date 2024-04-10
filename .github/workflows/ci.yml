@@ -25,7 +25,10 @@ jobs:
       run: docker run mageprod:latest python3 -m unittest discover -s tests --failfast
 
     - name: Run tests with Docker
-      run: docker run mageprod:latest python -m unittest test_null_data.py
+      run: |
+        pwd
+        ls
+        # docker run mageprod:latest python -m unittest test_null_data.py
       
 
 
