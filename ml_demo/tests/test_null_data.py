@@ -1,9 +1,9 @@
 import unittest
 import pandas as pd
 import sys
-sys.path.append('./home/src/ml_demo/custom/')   
-
-from prediction import check_null
+ 
+sys.path.append('../')  
+from transformers.check_null import check_null
 
 class TestCheckNullFunction(unittest.TestCase):
 
