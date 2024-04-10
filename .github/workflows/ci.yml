@@ -1,10 +1,8 @@
-name: PySpark Unit Tests
-
+name: mage ai testcses
 on:
   push:
     branches:
       - ka/feature/002/ml_demo
-
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -22,4 +20,8 @@ jobs:
 
     - name: Build and run Docker container
       run: docker build --platform linux/amd64 --tag mageprod:latest .
+
+    - name: Test image
+      run: docker run -it -p 6789:6789 mageprod:latest /app/run_app.sh mage start ml_demo
+
 
