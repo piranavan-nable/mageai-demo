@@ -21,8 +21,8 @@ jobs:
     - name: Build and run Docker container
       run: docker build --platform linux/amd64 --tag mageprod:latest .
 
-    - name: Test image
-      run: docker run -p 6789:6789 mageprod:latest /app/run_app.sh mage start ml_demo
+    - name: Run tests with Docker
+      run: docker run mageprod:latest python3 -m unittest discover -s tests --failfast
 
 
 
