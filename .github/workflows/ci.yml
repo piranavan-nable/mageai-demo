@@ -1,7 +1,7 @@
 name: PySpark Unit Tests
 
 on:
-  pull_request:
+  push:
     branches:
       - ka/feature/002/ml_demo
 
