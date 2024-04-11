@@ -38,14 +38,12 @@ def transform_custom(data, *args, **kwargs):
         # Predict sales value
         predicted_sales = model.predict(features)
 
-        # Round off predicted sales to 2 decimal places
-        predicted_sales_rounded = np.round(predicted_sales, 2)
         
         # Fill null value with predicted sales
-        data.at[index, 'sales'] = predicted_sales_rounded[0]
+        data.at[index, 'sales'] = predicted_sales[0]
 
     # Save the updated dataset
-    data.to_csv('filled_dataset.csv', index=False)  # Save the dataset to a new CSV file
+    data.to_csv('./mage_data/demo1/ML/sales_data_null_filled.csv', index=False, float_format='%.2f')  # Save the dataset to a new CSV file
 
     # Print only the 'order_date' and 'sales' columns for the predicted rows with sales rounded to 2 decimal places
     predicted_rows = data.loc[null_sales_indices, ['order_date', 'sales']].round({'sales': 2})
