@@ -23,7 +23,7 @@ def transform_custom(data, *args, **kwargs):
     # Load the previously trained XGBoost model
     model = joblib.load('./data/xgboost_model_sales.pkl')
 
-    # Define your features
+    # Define features
     FEATURES = ['year', 'month', 'quarter', 'dayofweek', 'dayofyear', 'dayofmonth', 'weekofyear','order_qty','price','CategoryNameEn','BrandNameEn','ChannelNameEn']
     TARGET = 'sales'
 

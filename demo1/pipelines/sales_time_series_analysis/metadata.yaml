@@ -84,7 +84,7 @@ blocks:
   language: python
   name: merge_data
   retry_config: null
-  status: executed
+  status: updated
   timeout: null
   type: transformer
   upstream_blocks:
@@ -93,7 +93,7 @@ blocks:
   - product_data_loader
   - category_loader
   uuid: merge_data
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration:
     file_source:
@@ -112,7 +112,7 @@ blocks:
   upstream_blocks:
   - merge_data
   uuid: duplicate_sales
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration:
     file_source:
@@ -131,7 +131,7 @@ blocks:
   upstream_blocks:
   - oitlierhandling
   uuid: remove__cols
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration:
     file_source:
@@ -150,7 +150,7 @@ blocks:
   upstream_blocks:
   - remove__cols
   uuid: naming
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration:
     file_source:
@@ -169,7 +169,7 @@ blocks:
   upstream_blocks:
   - duplicate_sales
   uuid: null_check
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: teal
   configuration:
     file_source:
@@ -188,7 +188,7 @@ blocks:
   upstream_blocks:
   - naming
   uuid: check_datatypes
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: teal
   configuration:
     file_source:
@@ -207,7 +207,7 @@ blocks:
   upstream_blocks:
   - check_datatypes
   uuid: covert_to_date
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration:
     file_source:
@@ -226,7 +226,7 @@ blocks:
   upstream_blocks:
   - null_check
   uuid: oitlierhandling
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration: {}
   downstream_blocks:
@@ -244,7 +244,7 @@ blocks:
   upstream_blocks:
   - covert_to_date
   uuid: distribution
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration:
     file_source:
@@ -263,7 +263,7 @@ blocks:
   upstream_blocks:
   - labelencoder
   uuid: create_features
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration: {}
   downstream_blocks:
@@ -280,7 +280,7 @@ blocks:
   upstream_blocks:
   - create_features
   uuid: model_development
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration: {}
   downstream_blocks: []
@@ -296,7 +296,7 @@ blocks:
   upstream_blocks:
   - model_development
   uuid: remarkable_scholar
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration: {}
   downstream_blocks: []
@@ -312,7 +312,7 @@ blocks:
   upstream_blocks:
   - distribution
   uuid: check_month_wisedata
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration:
     file_source:

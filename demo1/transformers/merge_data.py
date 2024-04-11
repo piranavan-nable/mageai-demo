@@ -22,12 +22,6 @@ def transform( data, data_2, data_3, data_4, *args, **kwargs):
     Returns:
         Anything (e.g. data frame, dictionary, array, int, str, etc.)
     """
-    # df1 = get_variable('sales_prediction_time_series', 'sales_data_loader', 'output_0')
-    # df2 = get_variable('sales_prediction_time_series', 'channel_loader', 'output_0')
-    # df3 = get_variable('sales_prediction_time_series', 'product_data_loader', 'output_0')
-    # df4 = get_variable('sales_prediction_time_series', 'category_loader', 'output_0')
-
-
     df1 = pd.DataFrame(data)
     df2 = pd.DataFrame(data_2)
     df3 = pd.DataFrame(data_3)
