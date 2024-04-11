@@ -21,7 +21,7 @@ def transform_custom(data, *args, **kwargs):
 
 
     # Load the previously trained XGBoost model
-    model = joblib.load('xgboost_model_sales.pkl')
+    model = joblib.load('./data/xgboost_model_sales.pkl')
 
     # Define your features
     FEATURES = ['year', 'month', 'quarter', 'dayofweek', 'dayofyear', 'dayofmonth', 'weekofyear','order_qty','price','CategoryNameEn','BrandNameEn','ChannelNameEn']
@@ -43,7 +43,7 @@ def transform_custom(data, *args, **kwargs):
         data.at[index, 'sales'] = predicted_sales[0]
 
     # Save the updated dataset
-    data.to_csv('./mage_data/demo1/ML/sales_data_null_filled.csv', index=False, float_format='%.2f')  # Save the dataset to a new CSV file
+    data.to_csv('./data/ML/sales_data_null_filled.csv', index=False, float_format='%.2f')  # Save the dataset to a new CSV file
 
     # Print only the 'order_date' and 'sales' columns for the predicted rows with sales rounded to 2 decimal places
     predicted_rows = data.loc[null_sales_indices, ['order_date', 'sales']].round({'sales': 2})

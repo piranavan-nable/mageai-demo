@@ -95,22 +95,6 @@ blocks:
   uuid: merge_data
 - all_upstream_blocks_executed: true
   color: null
-  configuration: {}
-  downstream_blocks: []
-  executor_config: null
-  executor_type: local_python
-  has_callback: false
-  language: python
-  name: export_salesdata
-  retry_config: null
-  status: executed
-  timeout: null
-  type: data_exporter
-  upstream_blocks:
-  - distribution
-  uuid: export_salesdata
-- all_upstream_blocks_executed: true
-  color: null
   configuration:
     file_source:
       path: transformers/duplicate_sales.py
@@ -248,7 +232,6 @@ blocks:
   downstream_blocks:
   - check_month_wisedata
   - labelencoder
-  - export_salesdata
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -291,13 +274,13 @@ blocks:
   language: python
   name: model_development
   retry_config: null
-  status: updated
+  status: executed
   timeout: null
   type: transformer
   upstream_blocks:
   - create_features
   uuid: model_development
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: null
   configuration: {}
   downstream_blocks: []

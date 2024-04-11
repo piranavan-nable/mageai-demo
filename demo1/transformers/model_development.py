@@ -107,7 +107,7 @@ def transform(data, *args, **kwargs):
     # Show the plot
     plt.show()
 
-    with open('xgboost_model_sales.pkl', 'wb') as f:
+    with open('./data/xgboost_model_sales.pkl', 'wb') as f:
         pickle.dump(reg, f)
 
     return test
