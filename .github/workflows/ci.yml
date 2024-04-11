@@ -28,7 +28,7 @@ jobs:
       run: |
         pwd
         ls
-        # docker run mageprod:latest python -m unittest test_null_data.py
+        docker run mageprod:latest python -m unittest ml_demo/tests/test_null_data.py
       
 
 
