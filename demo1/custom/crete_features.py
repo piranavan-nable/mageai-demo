@@ -5,7 +5,7 @@ if 'test' not in globals():
 
 
 @custom
-def transform_custom(*args, **kwargs):
+def transform_custom(df, *args, **kwargs):
     """
     args: The output from any upstream parent blocks (if applicable)
 
@@ -13,8 +13,17 @@ def transform_custom(*args, **kwargs):
         Anything (e.g. data frame, dictionary, array, int, str, etc.)
     """
     # Specify your custom logic here
+    # Extract year, day of the week, quarter, month, day of the year, day of the month,
+    # and week of the year from the 'order_date' column 
+    df['year'] = df['order_date'].dt.year
+    df['month'] = df['order_date'].dt.month
+    df['quarter'] = df['order_date'].dt.quarter
+    df['dayofweek'] = df['order_date'].dt.dayofweek
+    df['dayofyear'] = df['order_date'].dt.dayofyear
+    df['dayofmonth'] = df['order_date'].dt.day
+    df['weekofyear'] = df['order_date'].dt.isocalendar().week
 
-    return {}
+    return df
 
 
 @test

@@ -39,7 +39,7 @@ def transform(data, *args, **kwargs):
     print("Training set shape:", train.shape)
     print("Testing set shape:", test.shape)
 
-    FEATURES = ['year', 'month', 'quarter', 'dayofweek', 'dayofyear', 'dayofmonth', 'weekofyear','CategoryNameEn','BrandNameEn','ChannelNameEn']
+    FEATURES = ['year', 'month', 'quarter', 'dayofweek', 'dayofyear', 'dayofmonth', 'weekofyear','order_qty','price','CategoryNameEn','BrandNameEn','ChannelNameEn']
     TARGET = 'sales'
 
     # Extract features (X) and target variable (y) for training dataset.
@@ -107,7 +107,7 @@ def transform(data, *args, **kwargs):
     # Show the plot
     plt.show()
 
-    with open('./mage_data/demo1/ML/xgboost_model_sales.pkl', 'wb') as f:
+    with open('xgboost_model_sales.pkl', 'wb') as f:
         pickle.dump(reg, f)
 
     return test
