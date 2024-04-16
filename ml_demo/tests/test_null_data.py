@@ -3,7 +3,7 @@ import pandas as pd
 import os,sys
  
 sys.path.append('../')  
-from transformers.check_null import check_null
+from ml_demo.transformers.check_null import check_null
 
 class TestCheckNullFunction(unittest.TestCase):
 
