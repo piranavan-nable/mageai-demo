@@ -16,7 +16,7 @@ class TestCheckNullFunction(unittest.TestCase):
 
         # test 02 -> test with no null values
         # read data with no null values
-        df_1 =  pd.read_csv('./data/data_without_null.csv')
+        df_1 =  pd.read_csv('ml_demo/tests/data/data_without_null.csv')
         self.assertTrue(check_null(df_1).equals(df_1))
 
 
