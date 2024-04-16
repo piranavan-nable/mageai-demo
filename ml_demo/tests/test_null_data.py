@@ -2,7 +2,14 @@ import unittest
 import pandas as pd
 import os,sys
  
-sys.path.append('../')  
+# sys.path.append('../')  
+
+# Get the current working directory
+cwd = os.getcwd()
+
+# Print the current working directory
+print("Current Working Directory:", cwd)
+
 from ml_demo.transformers.check_null import check_null
 
 class TestCheckNullFunction(unittest.TestCase):
