@@ -7,9 +7,11 @@ if 'test' not in globals():
 @transformer
 def clean_data(data, *args, **kwargs):
     
-    # Specify your transformation logic here
-    data_cleaned = data.dropna()
-    return data_cleaned
+    if data.empty:  # Check if the DataFrame is empty
+        return None
+    else:
+        data_cleaned = data.dropna()
+        return data_cleaned
 
 
 @test
