@@ -18,11 +18,14 @@ jobs:
     - name: check current dir
       run: pwd
 
-    - name: Build and run Docker container
-      run: docker build --platform linux/amd64 --tag mageprod:latest .
+    - name: install packages
+      run: pip install -r requirements.txt
 
-    - name: Run tests with Docker
-      run: docker run mageprod:latest python3 -m unittest discover -s tests --failfast
+    # - name: Build and run Docker container
+    #   run: docker build --platform linux/amd64 --tag mageprod:latest .
+
+    # - name: Run tests with Docker
+    #   run: docker run mageprod:latest python3 -m unittest discover -s tests --failfast
 
     - name: Run tests with Docker
       run: |
