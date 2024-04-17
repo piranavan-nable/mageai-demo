@@ -38,8 +38,8 @@ class TestTransformationFunction(unittest.TestCase):
         # Test with DataFrame containing null values
         df_null = pd.DataFrame({'A': [1, 2, None, 4],
                                 'B': [5, None, 7, 8]})
-        expected_result_null = pd.DataFrame({'A': [False, False, True, False],
-                                             'B': [False, True, False, False]})
+        expected_result = pd.DataFrame({'A': [1.0,4.0],
+                                'B': [5.0,8.0]})
         self.assertTrue(clean_data(df_null).equals(expected_result_null))
 
 
