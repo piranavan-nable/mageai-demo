@@ -40,7 +40,7 @@ class TestTransformationFunction(unittest.TestCase):
                                 'B': [5, None, 7, 8]})
         expected_result = pd.DataFrame({'A': [1.0,4.0],
                                 'B': [5.0,8.0]})
-        self.assertTrue(clean_data(df_null).equals(expected_result_null))
+        self.assertTrue(clean_data(df_null).equals(expected_result))
 
 
 if __name__ == '__main__':
