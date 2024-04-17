@@ -10,12 +10,12 @@ blocks:
   language: python
   name: load_data_missing_hdl
   retry_config: null
-  status: executed
+  status: updated
   timeout: null
   type: data_loader
   upstream_blocks: []
   uuid: load_data_missing_hdl
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: teal
   configuration:
     file_source:
@@ -34,7 +34,7 @@ blocks:
   upstream_blocks:
   - load_data_missing_hdl
   uuid: null_check
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: teal
   configuration:
     file_source:
@@ -53,7 +53,7 @@ blocks:
   upstream_blocks:
   - null_check
   uuid: check_datatypes
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: teal
   configuration:
     file_source:
@@ -72,7 +72,7 @@ blocks:
   upstream_blocks:
   - check_datatypes
   uuid: covert_to_date
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: null
   configuration:
     file_source:
@@ -91,7 +91,7 @@ blocks:
   upstream_blocks:
   - covert_to_date
   uuid: drop_duplicates
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: teal
   configuration:
     file_source:
@@ -110,7 +110,7 @@ blocks:
   upstream_blocks:
   - drop_duplicates
   uuid: crete_features
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: teal
   configuration:
     file_source:
@@ -129,7 +129,7 @@ blocks:
   upstream_blocks:
   - crete_features
   uuid: define_encoding
-- all_upstream_blocks_executed: true
+- all_upstream_blocks_executed: false
   color: teal
   configuration:
     file_source:
@@ -141,7 +141,7 @@ blocks:
   language: python
   name: nullHandline_ML
   retry_config: null
-  status: updated
+  status: executed
   timeout: null
   type: custom
   upstream_blocks:

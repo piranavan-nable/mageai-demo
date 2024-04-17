@@ -20,6 +20,7 @@ def transform_custom(data, *args, **kwargs):
 
 
 
+
     # Load the previously trained XGBoost model
     model = joblib.load('./data/xgboost_model_sales.pkl')
 
