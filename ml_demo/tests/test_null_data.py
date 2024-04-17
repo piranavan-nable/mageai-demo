@@ -21,7 +21,7 @@ class TestCheckNullFunction(unittest.TestCase):
 
         #test 03 -> test with null values
         # Create a DataFrame with null values
-        df_2 = pd.pd.read_csv('ml_demo/tests/data/data_with_null.csv')
+        df_2 = pd.read_csv('ml_demo/tests/data/data_with_null.csv')
         result = check_null(df_2) 
         # Assert that the function returns None
         self.assertIsNone(result)
