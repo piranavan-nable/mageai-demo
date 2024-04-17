@@ -5,10 +5,11 @@ if 'test' not in globals():
 
 
 @transformer
-def validate_data(data, *args, **kwargs):
+def clean_data(data, *args, **kwargs):
     
-
-    return data
+    # Specify your transformation logic here
+    data_cleaned = data.dropna()
+    return data_cleaned
 
 
 @test
