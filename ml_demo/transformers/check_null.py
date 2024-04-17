@@ -6,7 +6,7 @@ if 'test' not in globals():
 import pandas as pd
 
 @transformer
-def check_null(data, *args, **kwargs):
+def check_null_val(data, *args, **kwargs):
 
     null_values = data.isnull().sum()
     

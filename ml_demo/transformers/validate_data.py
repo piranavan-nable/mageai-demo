@@ -6,7 +6,7 @@ if 'test' not in globals():
 import pandas as pd
 
 @transformer
-def transform(data, *args, **kwargs):
+def validate_data(data, *args, **kwargs):
     
     c_shape = data.shape
     print(c_shape)

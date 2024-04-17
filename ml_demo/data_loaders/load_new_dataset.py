@@ -7,7 +7,7 @@ if 'test' not in globals():
 import pandas as pd
 
 @data_loader
-def load_data_from_file(*args, **kwargs):
+def load_test_data_from_file(*args, **kwargs):
     """
     Template for loading data from filesystem.
     Load data from 1 file or multiple file directories.
@@ -28,5 +28,6 @@ def test_output(output, *args) -> None:
 
     assert output is not None, 'The output is undefined'
     assert isinstance(output, pd.DataFrame)
-    assert len(output) == 13
+    actual_df =  pd.read_csv('./data/new.csv')
+    assert len(output) == len(actual_df)
     assert list(output.columns) == ['customer_id', ' products_purchased', ' complains', ' money_spent']

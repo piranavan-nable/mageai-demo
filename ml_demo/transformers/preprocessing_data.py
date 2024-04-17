@@ -5,20 +5,8 @@ if 'test' not in globals():
 
 
 @transformer
-def transform(data, *args, **kwargs):
-    """
-    Template code for a transformer block.
-
-    Add more parameters to this function if this block has multiple parent blocks.
-    There should be one parameter for each output variable from each parent block.
-
-    Args:
-        data: The output from the upstream parent block
-        args: The output from any additional upstream blocks (if applicable)
-
-    Returns:
-        Anything (e.g. data frame, dictionary, array, int, str, etc.)
-    """
+def check_data(data, *args, **kwargs):
+  
     # Specify your transformation logic here
     c_shape = data.shape
     print(c_shape)

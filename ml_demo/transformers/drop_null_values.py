@@ -5,7 +5,7 @@ if 'test' not in globals():
 
 
 @transformer
-def transform(data, *args, **kwargs):
+def clean_data(data, *args, **kwargs):
     
     # Specify your transformation logic here
     data_cleaned = data.dropna()
