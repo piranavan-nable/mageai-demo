@@ -18,5 +18,8 @@ jobs:
     - name: check current dir
       run: pwd
 
+    - name: install mage ai
+      run: pip install mage-ai
+
     - name: exec unittest
       run: python -m unittest demo1/tests/test_unit.py
