@@ -34,7 +34,7 @@ jobs:
         python -m unittest ml_demo/tests/test_data_loading.py
 
     - name: Run unittestcases - transformations
-      run: python -m unittest ml_demo/tests/test_null_data.py
+      run: python -m unittest ml_demo/tests/test_trans.py
       
 
 

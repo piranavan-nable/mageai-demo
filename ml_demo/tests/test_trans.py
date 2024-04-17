@@ -4,8 +4,9 @@ import os,sys
 
 sys.path.append('../')  
 from ml_demo.transformers.check_null import check_null_val
+from ml_demo.transformers.drop_null_values import clean_data
 
-class TestCheckNullFunction(unittest.TestCase):
+class TestTransformationFunction(unittest.TestCase):
 
     def test_check_null(self):
 
@@ -25,6 +26,21 @@ class TestCheckNullFunction(unittest.TestCase):
         result = check_null_val(df_2) 
         # Assert that the function returns None
         self.assertIsNone(result)
+
+
+    def test_drop_null(self):
+
+        # Test with empty DataFrame
+        df_empty = pd.DataFrame()
+        expected_result_empty = pd.DataFrame(index=df_empty.index, columns=df_empty.columns, data=False)
+        self.assertTrue(check_null_val(df_empty).equals(expected_result_empty))
+        
+        # Test with DataFrame containing null values
+        df_null = pd.DataFrame({'A': [1, 2, None, 4],
+                                'B': [5, None, 7, 8]})
+        expected_result_null = pd.DataFrame({'A': [False, False, True, False],
+                                             'B': [False, True, False, False]})
+        self.assertTrue(check_null_val(df_null).equals(expected_result_null))
 
 
 if __name__ == '__main__':
