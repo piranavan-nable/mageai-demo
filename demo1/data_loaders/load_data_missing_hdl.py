@@ -16,7 +16,7 @@ def load_data_from_file(*args, **kwargs):
 
     Docs: https://docs.mage.ai/design/data-loading#fileio
     """
-    filepath = '../../data/ML/sales_data_test_ML.csv'
+    filepath = './data/ML/sales_data_test_ML.csv'
 
     return FileIO().load(filepath)
 
@@ -27,4 +27,3 @@ def test_output(output, *args) -> None:
     Template code for testing the output of the block.
     """
     assert output is not None, 'The output is undefined'
-    
