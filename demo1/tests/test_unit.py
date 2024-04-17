@@ -6,7 +6,7 @@ from demo1.data_loaders.load_data_missing_hdl import load_data_from_file
 from demo1.custom.null_check import transform_custom
 
 
-class test_data_loading_for_prediction(unittest.TestCase):
+class test_data_loading_for_pregitdiction(unittest.TestCase):
     def test_handle_missing_values_data_loading(self) :
             
 
