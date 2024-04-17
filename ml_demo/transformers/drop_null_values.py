@@ -10,7 +10,7 @@ def clean_data(data, *args, **kwargs):
     if data.empty:  # Check if the DataFrame is empty
         return None
     else:
-        data_cleaned = data.dropna()
+        data_cleaned = data.dropna().reset_index(drop=True)
         return data_cleaned
 
 
