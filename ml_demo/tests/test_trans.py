@@ -33,14 +33,14 @@ class TestTransformationFunction(unittest.TestCase):
         # Test with empty DataFrame
         df_empty = pd.DataFrame()
         expected_result_empty = pd.DataFrame(index=df_empty.index, columns=df_empty.columns, data=False)
-        self.assertIsNone(expected_result_empty)
+        self.assertIsNone(clean_data(expected_result_empty))
         
         # Test with DataFrame containing null values
         df_null = pd.DataFrame({'A': [1, 2, None, 4],
                                 'B': [5, None, 7, 8]})
         expected_result_null = pd.DataFrame({'A': [False, False, True, False],
                                              'B': [False, True, False, False]})
-        self.assertTrue(check_null_val(df_null).equals(expected_result_null))
+        self.assertTrue(clean_data(df_null).equals(expected_result_null))
 
 
 if __name__ == '__main__':
