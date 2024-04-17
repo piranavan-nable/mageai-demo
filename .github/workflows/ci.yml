@@ -27,7 +27,7 @@ jobs:
     # - name: Run tests with Docker
     #   run: docker run mageprod:latest python3 -m unittest discover -s tests --failfast
 
-    - name: Run unittestcases - transformations
+    - name: Run unittestcases - data loading
       run: |
         pwd
         ls

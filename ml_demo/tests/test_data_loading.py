@@ -5,7 +5,7 @@ import os,sys
 sys.path.append('../')  
 from ml_demo.data_loaders.load_new_dataset import load_test_data_from_file
 
-class TestCheckNullFunction(unittest.TestCase):
+class TestDataLoading(unittest.TestCase):
 
     def test_input_data_forPprediction(self) :
 
