@@ -1,1 +1,0 @@
-{"pizza_id": "int64", "order_id": "int64", "pizza_name_id": "str", "quantity": "int64", "order_date": "str", "unit_price": "float64", "total_price": "float64", "pizza_size": "str", "pizza_category": "str", "pizza_ingredients": "str", "pizza_name": "str", "sum_total_per_category": "float64", "diff_unit_price": "float64"}
