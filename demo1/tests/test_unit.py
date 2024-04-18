@@ -63,7 +63,7 @@ class test_data_loading_for_prediction(unittest.TestCase):
 
 
     def test_feature_creation(self):
-        
+
         # Load the expected DataFrame from a CSV file or any other source
         expected_df = pd.read_csv('./data/ML/sales_data_test_ML.csv')
         
@@ -94,7 +94,9 @@ class test_data_loading_for_prediction(unittest.TestCase):
             expected_dayofweek = pd.to_datetime(row['order_date']).dayofweek
             expected_dayofyear = pd.to_datetime(row['order_date']).dayofyear
             expected_dayofmonth = pd.to_datetime(row['order_date']).day
-            expected_weekofyear = pd.to_datetime(row['order_date']).isocalendar().week
+            # expected_weekofyear = pd.to_datetime(row['order_date']).isocalendar().week
+            isocalendar_tuple = pd.to_datetime(row['order_date']).isocalendar()
+            expected_weekofyear = isocalendar_tuple[1]
             
             # Assert that the values in the new columns match the expected values
             self.assertEqual(result_df.loc[index, 'year'], expected_year)
