@@ -45,13 +45,15 @@ class TestTransformationFunction(unittest.TestCase):
         self.assertTrue(clean_data(df_null).equals(expected_result))
 
     def test_check_data(self):
-
-        result = check_data()
+        
+        df_1 =  pd.read_csv('ml_demo/tests/data/data_without_null.csv')
+        result = check_data(df_1)
         self.assertIsNotNone(result)
 
     def test_validate_data(self):
 
-        result = validate_data()
+        df_1 =  pd.read_csv('ml_demo/tests/data/data_without_null.csv')
+        result = validate_data(df_1)
         self.assertIsNotNone(result)
         
 
