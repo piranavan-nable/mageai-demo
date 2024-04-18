@@ -5,6 +5,8 @@ import os,sys
 sys.path.append('../')  
 from ml_demo.transformers.check_null import check_null_val
 from ml_demo.transformers.drop_null_values import clean_data
+from ml_demo.transformers.validate_data import validate_data
+from ml_demo.transformers.preprocessing_data import check_data
 
 class TestTransformationFunction(unittest.TestCase):
 
@@ -42,6 +44,16 @@ class TestTransformationFunction(unittest.TestCase):
                                 'B': [5.0,8.0]})
         self.assertTrue(clean_data(df_null).equals(expected_result))
 
+    def test_check_data(self):
+
+        result = check_data()
+        self.assertIsNotNone(result)
+
+    def test_validate_data(self):
+
+        result = validate_data()
+        self.assertIsNotNone(result)
+        
 
 if __name__ == '__main__':
     unittest.main()
