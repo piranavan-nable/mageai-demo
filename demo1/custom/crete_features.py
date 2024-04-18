@@ -17,8 +17,9 @@ def transform_custom(df, *args, **kwargs):
         Anything (e.g. data frame, dictionary, array, int, str, etc.)
     """
     # Convert 'order_date' column to datetime type if it's not already
-    
     df['order_date'] = pd.to_datetime(df['order_date'],format='%d/%m/%Y', errors='coerce')
+    
+    
     # Specify your custom logic here
     # Extract year, day of the week, quarter, month, day of the year, day of the month,
     # and week of the year from the 'order_date' column 

@@ -63,6 +63,7 @@ class test_data_loading_for_prediction(unittest.TestCase):
 
 
     def test_feature_creation(self):
+        
         # Load the expected DataFrame from a CSV file or any other source
         expected_df = pd.read_csv('./data/ML/sales_data_test_ML.csv')
         
