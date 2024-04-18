@@ -9,7 +9,7 @@ if 'test' not in globals():
 
 
 @custom
-def transform_custom(df, *args, **kwargs):
+def transform_custom_features(df, *args, **kwargs):
     """
     args: The output from any upstream parent blocks (if applicable)
 

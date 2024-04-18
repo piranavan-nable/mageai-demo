@@ -8,7 +8,7 @@ if 'test' not in globals():
 
 
 @custom
-def transform_custom(df: pd.DataFrame , *args, **kwargs):
+def transform_custom_null(df: pd.DataFrame , *args, **kwargs):
     """
     args: The output from any upstream parent blocks (if applicable)
 

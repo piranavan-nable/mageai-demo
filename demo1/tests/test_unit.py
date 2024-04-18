@@ -3,10 +3,10 @@ import pandas as pd
 import os,sys
 
 from demo1.data_loaders.load_data_missing_hdl import load_data_from_file
-from demo1.custom.null_check import transform_custom
+from demo1.custom.null_check import transform_custom_null
 from demo1.custom.covert_to_date import transform_custom
 from demo1.transformers.drop_duplicates import execute_transformer_action
-from demo1.custom.crete_features import transform_custom
+from demo1.custom.crete_features import transform_custom_features
 
 
 class test_data_loading_for_prediction(unittest.TestCase):
@@ -23,7 +23,7 @@ class test_data_loading_for_prediction(unittest.TestCase):
     
     def null_check(self):
         expected = pd.read_csv('./data/ML/sales_data_test_ML.csv')
-        result = transform_custom()
+        result = transform_custom_null()
         
         # Assert that the function doesn't return None
         self.assertIsNotNone(result)
@@ -68,7 +68,7 @@ class test_data_loading_for_prediction(unittest.TestCase):
         expected_df = pd.read_csv('./data/ML/sales_data_test_ML.csv')
         
         # Call the function to transform the DataFrame
-        result_df = transform_custom(expected_df)
+        result_df = transform_custom_features(expected_df)
         
         # Assert that the function doesn't return None
         self.assertIsNotNone(result_df)
