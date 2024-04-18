@@ -46,16 +46,28 @@ class TestTransformationFunction(unittest.TestCase):
 
     def test_check_data(self):
         
+        #Test with valid DF
         df_1 =  pd.read_csv('ml_demo/tests/data/data_without_null.csv')
         result = check_data(df_1)
         self.assertIsNotNone(result)
 
+        #Test with valid DF
+        df_empty = pd.DataFrame()
+        with self.assertRaises(Exception):
+            check_data(df_empty)
+
     def test_validate_data(self):
 
+        #Test with valid DF
         df_1 =  pd.read_csv('ml_demo/tests/data/data_without_null.csv')
         result = validate_data(df_1)
         self.assertIsNotNone(result)
-        
+
+        #Test with invalid df
+        df_empty = pd.DataFrame()
+        with self.assertRaises(Exception):
+            validate_data(df_empty)
+            
 
 if __name__ == '__main__':
     unittest.main()
