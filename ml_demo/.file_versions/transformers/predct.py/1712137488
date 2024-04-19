@@ -1,0 +1,16 @@
+if 'transformer' not in globals():
+    from mage_ai.data_preparation.decorators import transformer
+if 'test' not in globals():
+    from mage_ai.data_preparation.decorators import test
+
+import joblib
+
+@transformer
+def transform(data, *args, **kwargs):
+    
+    # Load the saved K-means model
+    kmeans_model_loaded = joblib.load('data/kmeans_model.pkl')
+    
+    # Use the loaded K-means model to predict clusters for the new data
+new_predictions = kmeans_model_loaded.predict(data[['products_purchased','complains','money_spent']])
+    return data

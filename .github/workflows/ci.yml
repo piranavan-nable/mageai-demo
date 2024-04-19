@@ -1,0 +1,41 @@
+name: mage ai testcses
+on:
+  push:
+    branches:
+      - ka/feature/002/ml_demo
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - uses: actions/setup-python@v3
+      with:
+        python-version: "3.8"
+
+    - name: check current dir
+      run: pwd
+
+    - name: install packages
+      run: pip install -r requirements.txt
+
+    # - name: Build and run Docker container
+    #   run: docker build --platform linux/amd64 --tag mageprod:latest .
+
+    # - name: Run tests with Docker
+    #   run: docker run mageprod:latest python3 -m unittest discover -s tests --failfast
+
+    - name: Run unittestcases - data loading
+      run: |
+        pwd
+        ls
+        python -m unittest ml_demo/tests/test_data_loading.py
+
+    - name: Run unittestcases - transformations
+      run: python -m unittest ml_demo/tests/test_trans.py
+      
+
+
+

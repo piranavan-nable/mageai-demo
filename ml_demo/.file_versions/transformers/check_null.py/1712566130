@@ -1,0 +1,44 @@
+if 'transformer' not in globals():
+    from mage_ai.data_preparation.decorators import transformer
+if 'test' not in globals():
+    from mage_ai.data_preparation.decorators import test
+
+import pandas as pd
+
+@transformer
+def check_null(data, *args, **kwargs):
+
+    null_values = data.isnull().sum()
+    
+    if null_values.sum() == 0:
+        return data
+
+    print("ERROR ::::::::: NULL VALUES FOUND")
+
+
+@test
+def test_output(output, *args) -> None:
+
+    assert output is not None, 'The output is undefined'
+    assert isinstance(output, pd.DataFrame)
+    assert len(output) == 13
+
+# @test
+# def test_with_null_values(self):
+#     # Create test data with null values
+#     data = pd.DataFrame({
+#         'A': [1, None, 3],
+#         'B': ['a', 'b', None]
+#     })
+#     self.assertIsNone(check_null_values(data))
+
+# @test
+# def test_mixed_null_values(self):
+#     # Create test data with mixed null values
+#     data = pd.DataFrame({
+#         'A': [1, None, 3],
+#         'B': ['a', 'b', 'c']
+#     })
+#     self.assertIsNone(check_null_values(data))
+
+
