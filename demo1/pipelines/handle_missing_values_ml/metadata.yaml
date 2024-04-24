@@ -1,0 +1,173 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - null_check
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: load_data_missing_hdl
+  retry_config: null
+  status: updated
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: load_data_missing_hdl
+- all_upstream_blocks_executed: false
+  color: teal
+  configuration:
+    file_source:
+      path: custom/null_check.py
+  downstream_blocks:
+  - check_datatypes
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: null_check
+  retry_config: null
+  status: executed
+  timeout: null
+  type: custom
+  upstream_blocks:
+  - load_data_missing_hdl
+  uuid: null_check
+- all_upstream_blocks_executed: false
+  color: teal
+  configuration:
+    file_source:
+      path: custom/check_datatypes.py
+  downstream_blocks:
+  - covert_to_date
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: check_datatypes
+  retry_config: null
+  status: executed
+  timeout: null
+  type: custom
+  upstream_blocks:
+  - null_check
+  uuid: check_datatypes
+- all_upstream_blocks_executed: false
+  color: teal
+  configuration:
+    file_source:
+      path: custom/covert_to_date.py
+  downstream_blocks:
+  - drop_duplicates
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: covert_to_date
+  retry_config: null
+  status: executed
+  timeout: null
+  type: custom
+  upstream_blocks:
+  - check_datatypes
+  uuid: covert_to_date
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    file_source:
+      path: transformers/drop_duplicates.py
+  downstream_blocks:
+  - crete_features
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: drop_duplicates
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - covert_to_date
+  uuid: drop_duplicates
+- all_upstream_blocks_executed: false
+  color: teal
+  configuration:
+    file_source:
+      path: custom/crete_features.py
+  downstream_blocks:
+  - define_encoding
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: crete_features
+  retry_config: null
+  status: updated
+  timeout: null
+  type: custom
+  upstream_blocks:
+  - drop_duplicates
+  uuid: crete_features
+- all_upstream_blocks_executed: false
+  color: teal
+  configuration:
+    file_source:
+      path: custom/define_encoding.py
+  downstream_blocks:
+  - nullhandline_ml
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: define_encoding
+  retry_config: null
+  status: executed
+  timeout: null
+  type: custom
+  upstream_blocks:
+  - crete_features
+  uuid: define_encoding
+- all_upstream_blocks_executed: false
+  color: teal
+  configuration:
+    file_source:
+      path: custom/nullHandline_ML.py
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: nullHandline_ML
+  retry_config: null
+  status: executed
+  timeout: null
+  type: custom
+  upstream_blocks:
+  - define_encoding
+  uuid: nullhandline_ml
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2024-04-09 06:05:19.513899+00:00'
+data_integration: null
+description: null
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: handle_missing_values_ML
+notification_config: {}
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+tags: []
+type: python
+uuid: handle_missing_values_ml
+variables_dir: /home/src/mage_data/demo1
+widgets: []

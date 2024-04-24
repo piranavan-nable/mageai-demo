@@ -298,7 +298,7 @@ widgets:
   language: python
   name: prizza_data_loader_bar chart_u6
   retry_config: null
-  status: updated
+  status: executed
   timeout: null
   type: chart
   upstream_blocks:
@@ -317,7 +317,7 @@ widgets:
   language: python
   name: prizza_data_loader_pie chart_v9
   retry_config: null
-  status: updated
+  status: executed
   timeout: null
   type: chart
   upstream_blocks:

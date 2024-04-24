@@ -1,1 +1,0 @@
-{"Title": "str", "Rating": "float64", "Votes": "str", "Gross": "str", "Genre": "str", "Metascore": "float64", "Certificate": "str", "Director": "str", "Year": "int64", "Description": "str", "Runtime": "str"}
